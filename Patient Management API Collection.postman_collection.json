@@ -1,0 +1,471 @@
+{
+	"info": {
+		"_postman_id": "a7a1e982-ce72-4bce-9a54-7ffcc318dfd2",
+		"name": "Patient Management API Collection",
+		"description": "Coleção do Postman para testar a API de gestão de pacientes, histórico médico e consulta de exames externos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26554679"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:7252/api/auth/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7252",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patients",
+			"item": [
+				{
+					"name": "Get All Patients",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJleHAiOjE3NDQxNDI4NTYsImlzcyI6Iklzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.p1nCjo991iW1GnoDkJ5oXF-3XpIA7zH9wakthKFbblM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "Insira aqui o token JWT obtido no login, no formato: Bearer {seu_token}"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7252/api/patients",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7252",
+							"path": [
+								"api",
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Patient by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJleHAiOjE3NDQxNDI4NTYsImlzcyI6Iklzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.p1nCjo991iW1GnoDkJ5oXF-3XpIA7zH9wakthKFbblM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7252/api/patients/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7252",
+							"path": [
+								"api",
+								"patients",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Patient",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJleHAiOjE3NDQxNDI4NTYsImlzcyI6Iklzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.p1nCjo991iW1GnoDkJ5oXF-3XpIA7zH9wakthKFbblM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jose Silva\",\n    \"cpf\": \"12345678901\",\n    \"dateOfBirth\": \"1980-01-01T00:00:00\",\n    \"contact\": \"43-1245-6478\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:7252/api/patients",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7252",
+							"path": [
+								"api",
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Patient",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJleHAiOjE3NDQxNDI4NTYsImlzcyI6Iklzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.p1nCjo991iW1GnoDkJ5oXF-3XpIA7zH9wakthKFbblM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jose do Update\",\n    \"cpf\": \"12345678901\",\n    \"dateOfBirth\": \"1980-01-01T00:00:00\",\n    \"contact\": \"43-12345-6789\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:7252/api/patients/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7252",
+							"path": [
+								"api",
+								"patients",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Patient",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJleHAiOjE3NDQxNDI4NTYsImlzcyI6Iklzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.p1nCjo991iW1GnoDkJ5oXF-3XpIA7zH9wakthKFbblM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7252/api/patients/7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7252",
+							"path": [
+								"api",
+								"patients",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medical History",
+			"item": [
+				{
+					"name": "Get Medical History by Patient ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJleHAiOjE3NDQxNDI4NTYsImlzcyI6Iklzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.p1nCjo991iW1GnoDkJ5oXF-3XpIA7zH9wakthKFbblM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7252/api/medicalhistory/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7252",
+							"path": [
+								"api",
+								"medicalhistory",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Medical History",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJleHAiOjE3NDQxNDI4NTYsImlzcyI6Iklzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.p1nCjo991iW1GnoDkJ5oXF-3XpIA7zH9wakthKFbblM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patientId\": 2,\n    \"diagnoses\": \"Hipertensao\",\n    \"exams\": \"Hemograma, Raiox\",\n    \"prescriptions\": \"Remedio para Hipertencao\",\n    \"recordDate\": \"2023-01-15T12:00:00\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:7252/api/medicalhistory",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7252",
+							"path": [
+								"api",
+								"medicalhistory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Medical History",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJleHAiOjE3NDQxNDI4NTYsImlzcyI6Iklzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.p1nCjo991iW1GnoDkJ5oXF-3XpIA7zH9wakthKFbblM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patientId\": 2,\n    \"diagnoses\": \"Hipertensao\",\n    \"exams\": \"Hemograma, Raiox\",\n    \"prescriptions\": \"Remedio para Hipertencao 2\",\n    \"recordDate\": \"2023-01-15T12:00:00\"   \n}"
+						},
+						"url": {
+							"raw": "https://localhost:7252/api/medicalhistory/10",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7252",
+							"path": [
+								"api",
+								"medicalhistory",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Medical History",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJleHAiOjE3NDQxNDI4NTYsImlzcyI6Iklzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.p1nCjo991iW1GnoDkJ5oXF-3XpIA7zH9wakthKFbblM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7252/api/medicalhistory/9",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7252",
+							"path": [
+								"api",
+								"medicalhistory",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "External Exams",
+			"item": [
+				{
+					"name": "Get External Exams",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJleHAiOjE3NDQxNDI4NTYsImlzcyI6Iklzc3VlciIsImF1ZCI6IkF1ZGllbmNlIn0.p1nCjo991iW1GnoDkJ5oXF-3XpIA7zH9wakthKFbblM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": "Token JWT"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:7252/api/externalexams?filter=86870000",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7252",
+							"path": [
+								"api",
+								"externalexams"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "86870000"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "patientId",
+			"value": "1"
+		},
+		{
+			"key": "historyId",
+			"value": "1"
+		},
+		{
+			"key": "filter",
+			"value": "01001000"
+		}
+	]
+}
